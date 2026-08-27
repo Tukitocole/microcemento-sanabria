@@ -20,6 +20,14 @@
 // Ejemplo Buenos Aires (011): 5491122334455
 // Podés sobreescribirlo sin tocar el código creando un archivo .env
 // con VITE_WHATSAPP_NUMBER=5491122334455 (ver .env.example)
+import banoms from "../assets/images/banoms.jpg";
+import living from "../assets/images/livingms.jpg";
+import escalera from "../assets/images/escalerams.jfif";
+import balcon from "../assets/images/balconms.jpeg";
+import comedor from "../assets/images/comedorms.jpg";
+import mesa from "../assets/images/mesams.jpeg";
+import piso from "../assets/images/pisoms.jpeg";
+import bano2 from "../assets/images/bano2ms.jfif";
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5491162772727";
 
 // Mensaje que se usa si un botón no define uno propio
@@ -131,6 +139,7 @@ export const SERVICES = [
   { id: "renovacion", title: "Renovación de superficies", desc: "Cubrimos lo existente, sin obra pesada." },
 ];
 
+
 // ------------------------------------------------------------
 // GALERÍA DE TRABAJOS
 // ------------------------------------------------------------
@@ -139,14 +148,14 @@ export const SERVICES = [
 // del proyecto. Para usar una foto real, agregá el archivo a
 // src/assets/gallery/ y poné, por ejemplo: image: "/src/assets/gallery/bano-01.jpg"
 export const GALLERY_ITEMS = [
-  { id: 1, project: "Depto Palermo", room: "Baño", finish: "Microcemento gris cemento", size: "tall", image: null },
-  { id: 2, project: "Casa Nordelta", room: "Living", finish: "Piso continuo gris claro", size: "wide", image: null },
-  { id: 3, project: "Local Belgrano", room: "Comercial", finish: "Piso + mostrador a juego", size: "normal", image: null },
-  { id: 4, project: "Depto Recoleta", room: "Cocina", finish: "Mesada y frente en microcemento", size: "normal", image: null },
-  { id: 5, project: "Casa Pilar", room: "Escalera", finish: "Microcemento antideslizante", size: "tall", image: null },
-  { id: 6, project: "Oficina Vicente López", room: "Recepción", finish: "Pared texturada negra", size: "normal", image: null },
-  { id: 7, project: "Depto Caballito", room: "Baño", finish: "Ducha continua sin juntas", size: "wide", image: null },
-  { id: 8, project: "Casa Tigre", room: "Exterior", finish: "Deck perimetral en microcemento", size: "normal", image: null },
+  { id: 1, project: "Depto Palermo", room: "Baño", finish: "Microcemento gris cemento", size: "tall", image: banoms },
+  { id: 2, project: "Casa Nordelta", room: "Living", finish: "Piso continuo gris claro", size: "wide", image: living },
+  { id: 3, project: "Casa Belgrano", room: "Patio", finish: "Piso blanco + relieve", size: "normal", image: balcon },
+  { id: 4, project: "Depto Recoleta", room: "Cocina", finish: "Piso Gris claro", size: "normal", image: comedor },
+  { id: 5, project: "Casa Pilar", room: "Escalera", finish: "Microcemento antideslizante", size: "tall", image: escalera },
+  { id: 6, project: "Mesas Microcementadas ", room: "renovacion de mesas", finish: "texturada negra/gris/blanca", size: "tall", image: mesa },
+  { id: 7, project: "Depto Caballito", room: "Dormitorio", finish: "Piso Color rojo vino", size: "normal", image: piso },
+  { id: 8, project: "Depto Tigre", room: "baño", finish: "Piso gris + mesada ", size: "normal", image: bano2 },
 ];
 
 // ------------------------------------------------------------
