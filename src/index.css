@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: #050505;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: theme("fontFamily.head");
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background-color: #E50914;
+    color: #F5F5F5;
+  }
+
+  /* Foco visible para accesibilidad (teclado) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #E50914;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-6 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-head text-xs sm:text-sm uppercase tracking-[0.28em] text-blaze font-semibold;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-[2px] w-6 bg-blaze;
+  }
+
+  /* Botón principal: relleno rojo, esquina cortada en diagonal (motivo del isotipo) */
+  .btn-cut {
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  }
+
+  .btn-primary {
+    @apply btn-cut inline-flex items-center justify-center gap-2 bg-blaze px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:bg-blaze-bright hover:shadow-[0_0_28px_rgba(229,9,20,0.45)] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn-cut inline-flex items-center justify-center gap-2 border border-cement-light/40 bg-transparent px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:border-blaze hover:text-blaze active:scale-[0.98];
+  }
+
+  .card-cement {
+    @apply relative overflow-hidden rounded-sm border border-white/5 bg-ink-soft;
+  }
+
+  /* Textura de cemento: grano sutil generado por SVG (sin depender de imágenes externas) */
+  .texture-noise {
+    position: relative;
+  }
+  .texture-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .section-divider {
+    @apply relative h-px w-full bg-gradient-to-r from-transparent via-cement-faint to-transparent;
+  }
+
+  .field {
+    @apply w-full border border-white/10 bg-ink px-4 py-3 text-sm text-bone placeholder:text-cement outline-none transition-colors duration-200 focus:border-blaze;
+  }
+}
