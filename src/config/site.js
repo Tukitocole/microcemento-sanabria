@@ -28,6 +28,13 @@ import comedor from "../assets/images/comedorms.jpg";
 import mesa from "../assets/images/mesams.jpeg";
 import piso from "../assets/images/pisoms.jpeg";
 import bano2 from "../assets/images/bano2ms.jfif";
+import s1 from "../assets/images/s1.jfif";
+import s2 from "../assets/images/s2.jfif";
+import s3 from "../assets/images/s3.jfif";
+import s4 from "../assets/images/s4.jpg";
+import s5 from "../assets/images/s5.jpg";
+import s6 from "../assets/images/s6.jpg";
+
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5491162772727";
 
 // Mensaje que se usa si un botón no define uno propio
@@ -44,7 +51,7 @@ Quedo atento/a. ¡Gracias!`;
 export const COMPANY = {
   name: "Microcemento Sanabria",
   shortName: "Sanabria",
-  email: "contacto@microcementosanabria.com",
+  email: "microcementosanabria@gmail.com",
   location: "Buenos Aires, Argentina",
   // Placeholders: reemplazar por las URLs reales de las redes.
   social: {
@@ -59,9 +66,9 @@ export const COMPANY = {
 // ------------------------------------------------------------
 export const COPY = {
   hero: {
-    eyebrow: "Microcemento premium",
-    titleLine1: "MICROCEMENTO",
-    titleLine2: "QUE TRANSFORMA ESPACIOS.",
+    eyebrow: "Microcemento De Calidad.",
+    titleLine1: "MICROCEMENTO SANABRIA",
+    titleLine2: "TRANSFORMA TUS ESPACIOS.",
     subtitle:
       "Terminaciones modernas, resistentes y elegantes para transformar tus espacios.",
     ctaPrimary: "Consultar por WhatsApp",
@@ -130,15 +137,13 @@ Quedo atento/a. ¡Gracias!`,
 // SERVICIOS / APLICACIONES (sección "Qué hacemos")
 // ------------------------------------------------------------
 export const SERVICES = [
-  { id: "pisos", title: "Pisos", desc: "Superficies continuas, cálidas y sin juntas." },
-  { id: "paredes", title: "Paredes", desc: "Revestimientos con textura y carácter." },
-  { id: "banos", title: "Baños", desc: "Impermeable, moderno y fácil de mantener." },
-  { id: "cocinas", title: "Cocinas", desc: "Resistencia diaria con estética minimalista." },
-  { id: "locales", title: "Locales comerciales", desc: "Identidad de marca desde el piso." },
-  { id: "exteriores", title: "Espacios exteriores", desc: "Terminaciones preparadas para la intemperie." },
-  { id: "renovacion", title: "Renovación de superficies", desc: "Cubrimos lo existente, sin obra pesada." },
+  { id: "pisos", title: "Pisos", desc: "Superficies continuas, cálidas y sin juntas.", image: s1 },
+  { id: "paredes", title: "Paredes", desc: "Revestimientos con textura y carácter.", image: s2 },
+  { id: "banos", title: "Baños", desc: "Impermeable, moderno y fácil de mantener.", image: s3 },
+  { id: "cocinas", title: "Cocinas", desc: "Resistencia diaria con estética minimalista.", image: s4 },
+  { id: "locales", title: "Locales comerciales", desc: "Identidad de marca desde el piso.", image: s5 },
+  { id: "exteriores", title: "Espacios exteriores", desc: "Terminaciones preparadas para la intemperie.", image: s6 },
 ];
-
 
 // ------------------------------------------------------------
 // GALERÍA DE TRABAJOS
