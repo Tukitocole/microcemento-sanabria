@@ -62,11 +62,29 @@
   }
 
   .btn-primary {
-    @apply btn-cut inline-flex items-center justify-center gap-2 bg-blaze px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:bg-blaze-bright hover:shadow-[0_0_28px_rgba(229,9,20,0.45)] active:scale-[0.98];
+    @apply btn-cut relative isolate inline-flex items-center justify-center gap-2 overflow-hidden bg-blaze px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:-translate-y-0.5 hover:bg-blaze-bright hover:shadow-[0_0_28px_rgba(229,9,20,0.45)] active:translate-y-0 active:scale-[0.96];
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .btn-secondary {
-    @apply btn-cut inline-flex items-center justify-center gap-2 border border-cement-light/40 bg-transparent px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:border-blaze hover:text-blaze active:scale-[0.98];
+    @apply btn-cut relative isolate inline-flex items-center justify-center gap-2 overflow-hidden border border-cement-light/40 bg-transparent px-7 py-4 font-head text-sm sm:text-base font-semibold uppercase tracking-wider text-bone transition-all duration-300 hover:-translate-y-0.5 hover:border-blaze hover:text-blaze active:translate-y-0 active:scale-[0.96];
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary::before,
+  .btn-secondary::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20%;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.2) 47%, rgba(229,9,20,0.55) 53%, transparent 66%);
+    transform: translateX(-85%);
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary:hover::before,
+  .btn-secondary:hover::before {
+    transform: translateX(85%);
   }
 
   .card-cement {
@@ -93,5 +111,146 @@
 
   .field {
     @apply w-full border border-white/10 bg-ink px-4 py-3 text-sm text-bone placeholder:text-cement outline-none transition-colors duration-200 focus:border-blaze;
+  }
+
+  .marquee {
+    @apply relative z-10 overflow-hidden border-y border-blaze/20 bg-ink py-3 text-bone;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-group {
+    @apply flex min-w-max flex-1 shrink-0 items-center justify-around;
+  }
+
+  .marquee-item {
+    @apply flex items-center font-display text-lg uppercase tracking-[0.12em] sm:text-xl;
+  }
+
+  .marquee-dot {
+    @apply mx-5 text-blaze sm:mx-7;
+  }
+
+  .site-link,
+  .footer-link,
+  .social-link {
+    transition: color 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease;
+  }
+
+  .site-link {
+    @apply relative inline-block hover:-translate-y-px;
+  }
+
+  .site-link::after {
+    content: "";
+    @apply absolute -bottom-2 left-0 h-px w-full origin-right scale-x-0 bg-blaze transition-transform duration-300;
+  }
+
+  .site-link:hover::after { @apply origin-left scale-x-100; }
+  .footer-link { @apply inline-block hover:translate-x-1; }
+  .social-link { @apply hover:-translate-y-1 hover:shadow-[0_6px_18px_rgba(229,9,20,0.16)] active:translate-y-0; }
+
+  .before-after {
+    @apply relative aspect-[4/3] overflow-hidden bg-ink-raised;
+  }
+
+  .before-after-surface {
+    @apply absolute inset-0 overflow-hidden;
+    background-image: linear-gradient(135deg, #242424, #111 58%, #080808);
+  }
+
+  .before-after-surface::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 opacity-20;
+    background: linear-gradient(115deg, transparent 42%, #E50914 49%, transparent 56%);
+  }
+
+  .before-after-after { background-image: linear-gradient(135deg, #363636, #181818 55%, #0d0d0d); }
+  .before-after-surface img { @apply h-full w-full select-none object-cover; }
+  .before-after-clip {
+    @apply absolute inset-0;
+    clip-path: inset(0 calc(100% - var(--position)) 0 0);
+  }
+
+  .before-after-label {
+    @apply absolute bottom-4 z-10 bg-black/70 px-3 py-2 font-head text-xs uppercase tracking-[0.2em] text-bone;
+  }
+
+  .before-after-before .before-after-label { @apply left-4; }
+  .before-after-after .before-after-label { @apply right-4; }
+  .before-after-divider {
+    @apply pointer-events-none absolute inset-y-0 z-20 w-0.5 bg-blaze shadow-[0_0_18px_rgba(229,9,20,0.55)];
+    left: var(--position);
+    transform: translateX(-50%);
+  }
+
+  .before-after-handle {
+    @apply absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 rounded-full border-2 border-blaze bg-ink text-lg font-semibold text-bone shadow-xl transition-transform duration-300;
+  }
+
+  .before-after:hover .before-after-handle { transform: translate(-50%, -50%) scale(1.06); }
+  .before-after-range {
+    @apply absolute inset-0 z-30 h-full w-full cursor-ew-resize opacity-0;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes heroClip {
+  from { opacity: 0; transform: translateX(-28px); clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  to { opacity: 1; transform: translateX(0); clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%); }
+}
+
+@keyframes heroBlaze {
+  from { opacity: 0; transform: scaleX(0.2) translateX(-20%); }
+  to { opacity: 0.18; transform: scaleX(1) translateX(0); }
+}
+
+@keyframes heroActions {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes scrollFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+@keyframes scrollLabel {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes whatsappRing {
+  0% { opacity: 0.6; transform: scale(0.9); }
+  75%, 100% { opacity: 0; transform: scale(1.45); }
+}
+
+.hero-title { animation: heroClip 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-blaze { animation: heroBlaze 1200ms 150ms cubic-bezier(0.16, 1, 0.3, 1) both; transform-origin: left center; }
+.hero-actions { animation: heroActions 650ms 350ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-scroll span { animation: scrollLabel 2.4s ease-in-out infinite; }
+.hero-scroll-arrow { animation: scrollFloat 1.8s ease-in-out infinite; }
+.whatsapp-ring { animation: whatsappRing 2.6s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .hero-title,
+  .hero-blaze,
+  .hero-actions,
+  .hero-scroll span,
+  .hero-scroll-arrow,
+  .whatsapp-ring {
+    animation: none !important;
+    transform: none !important;
   }
 }

@@ -27,7 +27,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="text-sm text-bone/80 transition-colors hover:text-blaze">
+                <a href={l.href} className="footer-link text-sm text-bone/80 hover:text-blaze">
                   {l.label}
                 </a>
               </li>
@@ -72,7 +72,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center border border-white/10 text-bone/80 transition-colors hover:border-blaze hover:text-blaze"
+                className="social-link flex h-10 w-10 items-center justify-center border border-white/10 text-bone/80 hover:border-blaze hover:text-blaze"
               >
                 <Icon className="h-4 w-4" />
               </a>

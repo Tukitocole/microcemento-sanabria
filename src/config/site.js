@@ -164,6 +164,16 @@ export const GALLERY_ITEMS = [
 ];
 
 // ------------------------------------------------------------
+// ANTES / DESPUÉS
+// ------------------------------------------------------------
+// Importá tus fotos arriba y reemplazá null por la variable correspondiente.
+// Para una comparación precisa, usá dos fotos con el mismo encuadre y proporción.
+export const BEFORE_AFTER = [
+  { id: 1, title: "Renovación de baño", detail: "Revestimiento continuo en paredes y piso", before: null, after: null },
+  { id: 2, title: "Transformación de living", detail: "Piso de microcemento gris claro", before: null, after: null },
+];
+
+// ------------------------------------------------------------
 // BENEFICIOS ("Por qué elegirnos")
 // ------------------------------------------------------------
 export const BENEFITS = [

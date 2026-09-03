@@ -36,7 +36,7 @@ export default function Services() {
                     <img
                       src={s.image}
                       alt={`${s.title} - Microcemento Sanabria`}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-90"
                     />
                   ) : (
                     <div className="h-full w-full transition-transform duration-500 group-hover:scale-105">
@@ -49,7 +49,7 @@ export default function Services() {
                   )}
                 </div>
 
-                <div className="p-4">
+                <div className="p-4 transition-transform duration-500 group-hover:-translate-y-0.5">
                   <h3 className="font-head text-base uppercase tracking-wide text-bone">
                     {s.title}
                   </h3>

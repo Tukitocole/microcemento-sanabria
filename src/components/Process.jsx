@@ -2,6 +2,8 @@ import { COPY, PROCESS_STEPS } from "../config/site";
 import Reveal from "./Reveal";
 import { whatsappHref } from "../utils/whatsapp";
 import { WhatsAppIcon } from "./icons";
+import { useReveal } from "../hooks/useReveal";
+import { useCountUp } from "../hooks/useCountUp";
 
 export default function Process() {
   return (
@@ -35,24 +37,29 @@ export default function Process() {
           {/* línea conectora, solo desktop */}
           <div className="section-divider absolute left-0 right-0 top-6 hidden lg:block" />
 
-          {PROCESS_STEPS.map((step, i) => (
-            <Reveal key={step.n} delay={i * 90} className="relative">
-              <div className="relative z-10 flex items-center gap-3 lg:block">
-                <span className="font-display text-4xl leading-none text-blaze/25 sm:text-5xl">
-                  {step.n}
-                </span>
-                <span className="h-px w-8 bg-blaze lg:mt-4 lg:block" />
-              </div>
-              <h3 className="relative z-10 mt-3 font-head text-lg uppercase tracking-wide text-bone">
-                {step.title}
-              </h3>
-              <p className="relative z-10 mt-2 text-sm leading-relaxed text-cement-light">
-                {step.text}
-              </p>
-            </Reveal>
-          ))}
+          {PROCESS_STEPS.map((step, i) => <ProcessStep key={step.n} step={step} delay={i * 90} />)}
         </div>
       </div>
     </section>
+  );
+}
+
+function ProcessStep({ step, delay }) {
+  const { ref, visible } = useReveal();
+  const number = useCountUp(Number(step.n), visible);
+
+  return (
+    <div
+      ref={ref}
+      className={`relative transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+    >
+      <div className="relative z-10 flex items-center gap-3 lg:block">
+        <span className="font-display text-4xl leading-none text-blaze/25 sm:text-5xl">{number}</span>
+        <span className="h-px w-8 origin-left bg-blaze transition-transform duration-700 lg:mt-4 lg:block" />
+      </div>
+      <h3 className="relative z-10 mt-3 font-head text-lg uppercase tracking-wide text-bone">{step.title}</h3>
+      <p className="relative z-10 mt-2 text-sm leading-relaxed text-cement-light">{step.text}</p>
+    </div>
   );
 }

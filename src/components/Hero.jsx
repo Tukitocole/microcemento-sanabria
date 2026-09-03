@@ -2,6 +2,7 @@ import { COPY } from "../config/site";
 import { whatsappHref } from "../utils/whatsapp";
 import { WhatsAppIcon, ArrowDown } from "./icons";
 import Reveal from "./Reveal";
+import { useParallax } from "../hooks/useParallax";
 
 /**
  * Fondo del Hero: generado 100% con CSS (gradientes + textura de
@@ -12,13 +13,15 @@ import Reveal from "./Reveal";
  * por un <img> o <video> absolutamente posicionado con las mismas clases.
  */
 export default function Hero() {
+  const backgroundRef = useParallax();
+
   return (
     <section
       id="inicio"
       className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink pt-16 sm:pt-20"
     >
       {/* Fondo: textura de cemento con viñeta + haz diagonal rojo (motivo del isotipo) */}
-      <div className="texture-noise absolute inset-0">
+      <div ref={backgroundRef} className="texture-noise absolute -inset-y-16 inset-x-0 will-change-transform">
         <div
           className="absolute inset-0"
           style={{
@@ -27,7 +30,7 @@ export default function Hero() {
           }}
         />
         <div
-          className="absolute -left-1/4 top-0 h-full w-1/2 opacity-[0.18]"
+          className="hero-blaze absolute -left-1/4 top-0 h-full w-1/2 opacity-[0.18]"
           style={{
             background:
               "linear-gradient(115deg, transparent 40%, #E50914 48%, #E50914 50%, transparent 58%)",
@@ -43,7 +46,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h1 className="mt-6 max-w-full font-display text-[9vw] leading-[0.92] tracking-[-0.02em] text-bone sm:text-[8vw] lg:text-[6vw]">
+          <h1 className="hero-title mt-6 max-w-full font-display text-[9vw] leading-[0.92] tracking-[-0.02em] text-bone sm:text-[8vw] lg:text-[6vw]">
             {COPY.hero.titleLine1}
             <br />
             <span className="text-blaze">{COPY.hero.titleLine2}</span>
@@ -57,7 +60,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={300}>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="hero-actions mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href={whatsappHref(COPY.hero.whatsappMessage)}
               target="_blank"
@@ -77,10 +80,10 @@ export default function Hero() {
       <a
         href="#nosotros"
         aria-label="Continuar scrolleando"
-        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-cement-light/70 transition-colors hover:text-bone sm:flex"
+        className="hero-scroll absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-cement-light/70 transition-colors hover:text-bone sm:flex"
       >
         <span className="font-head text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <ArrowDown className="h-4 w-4 animate-bounce" />
+        <ArrowDown className="hero-scroll-arrow h-4 w-4" />
       </a>
     </section>
   );
