@@ -34,6 +34,10 @@ import s3 from "../assets/images/s3.jfif";
 import s4 from "../assets/images/s4.jpg";
 import s5 from "../assets/images/s5.jpg";
 import s6 from "../assets/images/s6.jpg";
+import antesms1 from "../assets/images/antesms1.png";
+import antesms2 from "../assets/images/antesms2.jpeg";
+import despuesms1 from "../assets/images/despuesms1.png";
+import despuesms2 from "../assets/images/despuesms2.jpeg";
 
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5491162772727";
 
@@ -169,8 +173,8 @@ export const GALLERY_ITEMS = [
 // Importá tus fotos arriba y reemplazá null por la variable correspondiente.
 // Para una comparación precisa, usá dos fotos con el mismo encuadre y proporción.
 export const BEFORE_AFTER = [
-  { id: 1, title: "Renovación de baño", detail: "Revestimiento continuo en paredes y piso", before: null, after: null },
-  { id: 2, title: "Transformación de living", detail: "Piso de microcemento gris claro", before: null, after: null },
+  { id: 1, title: "Renovación de baño", detail: "Revestimiento continuo en paredes y piso", before: antesms1, after: despuesms1 },
+  { id: 2, title: "Transformación de living", detail: "Piso de microcemento gris claro", before: antesms2, after: despuesms2 },
 ];
 
 // ------------------------------------------------------------
