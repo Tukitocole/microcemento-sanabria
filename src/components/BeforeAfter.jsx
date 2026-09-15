@@ -37,7 +37,10 @@ function Comparison({ project }) {
 
   return (
     <article className="card-cement group">
-      <div className="before-after" style={{ "--position": `${position}%` }}>
+      <div
+        className="before-after"
+        style={{ aspectRatio: project.aspect, "--position": `${position}%` }}
+      >
         <Surface image={project.after} label="Después" tone="after" />
         <div className="before-after-clip">
           <Surface image={project.before} label="Antes" tone="before" />

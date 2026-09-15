@@ -173,8 +173,8 @@ export const GALLERY_ITEMS = [
 // Importá tus fotos arriba y reemplazá null por la variable correspondiente.
 // Para una comparación precisa, usá dos fotos con el mismo encuadre y proporción.
 export const BEFORE_AFTER = [
-  { id: 1, title: "Renovación de baño", detail: "Revestimiento continuo en paredes y piso", before: antesms1, after: despuesms1 },
-  { id: 2, title: "Transformación de living", detail: "Piso de microcemento gris claro", before: antesms2, after: despuesms2 },
+  { id: 1, title: "Renovación de cocina", detail: "Piso de microcemento marron roble", before: antesms1, after: despuesms1, aspect: 0.81 },
+  { id: 2, title: "Transformación de patio", detail: "Piso de microcemento blanco cuarzo", before: antesms2, after: despuesms2, aspect: 0.52 },
 ];
 
 // ------------------------------------------------------------

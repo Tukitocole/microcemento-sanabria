@@ -157,7 +157,7 @@
   .social-link { @apply hover:-translate-y-1 hover:shadow-[0_6px_18px_rgba(229,9,20,0.16)] active:translate-y-0; }
 
   .before-after {
-    @apply relative aspect-[4/3] overflow-hidden bg-ink-raised;
+    @apply relative overflow-hidden bg-ink-raised;
   }
 
   .before-after-surface {
