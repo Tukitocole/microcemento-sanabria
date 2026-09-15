@@ -165,12 +165,6 @@
     background-image: linear-gradient(135deg, #242424, #111 58%, #080808);
   }
 
-  .before-after-surface::after {
-    content: "";
-    @apply pointer-events-none absolute inset-0 opacity-20;
-    background: linear-gradient(115deg, transparent 42%, #E50914 49%, transparent 56%);
-  }
-
   .before-after-after { background-image: linear-gradient(135deg, #363636, #181818 55%, #0d0d0d); }
   .before-after-surface img { @apply h-full w-full select-none object-cover; }
   .before-after-clip {

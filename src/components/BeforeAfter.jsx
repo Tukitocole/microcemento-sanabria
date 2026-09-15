@@ -2,6 +2,8 @@ import { useState } from "react";
 import { BEFORE_AFTER } from "../config/site";
 import Reveal from "./Reveal";
 
+const ASPECT = 2 / 3;
+
 export default function BeforeAfter() {
   return (
     <section id="antes-despues" className="relative scroll-mt-20 bg-ink py-24 sm:py-32">
@@ -39,7 +41,7 @@ function Comparison({ project }) {
     <article className="card-cement group">
       <div
         className="before-after"
-        style={{ aspectRatio: project.aspect, "--position": `${position}%` }}
+        style={{ aspectRatio: ASPECT, "--position": `${position}%` }}
       >
         <Surface image={project.after} label="Después" tone="after" />
         <div className="before-after-clip">
